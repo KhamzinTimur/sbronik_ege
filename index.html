@@ -30,19 +30,12 @@
                 <div id="testResult" class="result"></div>
             </div>
         </div>
-        
-        <div class="footer">
-            © 2023 Тестовая система. Все права защищены.
-        </div>
     </div>
 
     <script src="script.js"></script>
     <script>
         function downloadCollection() {
-            // Путь к PDF-файлу в папке проекта
-            const pdfUrl = 'sbornik.pdf'; // или 'assets/sbornik.pdf', если файл в подпапке
-            
-            // Создаем временную ссылку для скачивания
+            const pdfUrl = 'sbornik.pdf';      
             const a = document.createElement('a');
             a.href = pdfUrl;
             a.download = 'Сборник_задач.pdf';
