@@ -17,6 +17,7 @@
             <div class="section-selector">
                 <button class="section-btn active" onclick="selectSection('part1')">Первая часть</button>
                 <button class="section-btn" onclick="selectSection('part2')">Вторая часть</button>
+                <button class="section-btn" onclick="downloadCollection()">Сборник</button>
             </div>
             
             <div class="progress-container">
@@ -36,5 +37,35 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+        function downloadCollection() {
+            // Создаем содержимое сборника
+            let collectionContent = "Сборник задач по математике\n\n";
+            
+            // Добавляем вопросы из всех частей
+            for (const part in QuestionsDB) {
+                collectionContent += `=== ${part.toUpperCase()} ===\n\n`;
+                QuestionsDB[part].forEach((question, index) => {
+                    collectionContent += `${index + 1}. ${question.question}\n`;
+                    collectionContent += `Ответ: ${question.answer}\n\n`;
+                });
+            }
+            
+            // Создаем Blob с содержимым
+            const blob = new Blob([collectionContent], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            
+            // Создаем временную ссылку для скачивания
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Сборник_задач.txt';
+            document.body.appendChild(a);
+            a.click();
+            
+            // Очищаем
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+    </script>
 </body>
 </html>
