@@ -372,8 +372,7 @@ function shuffleArray(array) {
 
 // Выбор раздела
 function selectSection(section) {
-    if (AppState.testCompleted) return;
-    
+    resetTestState(); 
     AppState.currentSection = section;
     document.querySelectorAll('.section-btn').forEach(btn => {
         btn.classList.remove('active');
