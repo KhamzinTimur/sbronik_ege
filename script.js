@@ -373,13 +373,17 @@ function shuffleArray(array) {
 // Выбор раздела
 function selectSection(section) {
     resetTestState();
+    
     const resultElement = document.getElementById('testResult');
     resultElement.style.display = "none";
+    
     AppState.currentSection = section;
+    
     document.querySelectorAll('.section-btn').forEach(btn => {
         btn.classList.remove('active');
     });
     event.target.classList.add('active');
+    
     generateTest();
 }
 
